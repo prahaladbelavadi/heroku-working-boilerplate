@@ -12,7 +12,22 @@ const courses = [
 
 app.get("/", function (req, res) {
     //when we get an http get request to the root/homepage
-    res.send("Hello World");
+    res.json({
+        availableEndpoints: [
+            {
+                "get": "/courses"
+            },
+            {
+                "get": "/courses/:id"
+            },
+            {
+                "post": "/courses",
+                "requiredBody": {
+                    "name": "string"
+                }
+            }
+        ]
+    });
 });
 
 //when we route to /courses
